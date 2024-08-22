@@ -1,6 +1,6 @@
 import React from "react";
 
-const UserRow = ({ user }) => {
+const UserRow = ({ user, deleteEmployeeByID, editEmployee }) => {
   return (
     <tr className="flex gap-40">
       <td>
@@ -28,8 +28,24 @@ const UserRow = ({ user }) => {
       </td>
       <td>{user.email}</td>
       <td>
-        <button className="btn btn-outline btn-info btn-xs">Edit</button>
-        <button className="btn btn-outline btn-error btn-xs">delete</button>
+        <button
+          onClick={() => {
+            console.log(user.eid);
+            editEmployee(user.eid);
+          }}
+          className="btn btn-outline btn-info btn-xs"
+        >
+          Edit
+        </button>
+        <button
+          onClick={() => {
+            console.log(user.eid);
+            deleteEmployeeByID(user.eid);
+          }}
+          className="btn btn-outline btn-error btn-xs"
+        >
+          delete
+        </button>
       </td>
     </tr>
   );
