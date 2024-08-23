@@ -29,6 +29,50 @@ const UserRow = ({ user, deleteEmployeeByID, editEmployee }) => {
       <td>{user.email}</td>
       <td>
         <button
+          className="btn btn-outline btn-info btn-xs"
+          onClick={() => document.getElementById("my_modal_1").showModal()}
+        >
+          Edit
+        </button>
+        <dialog id="my_modal_1" className="modal">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">Hello!</h3>
+            <input
+              className="rounded-md p-2 m-3"
+              type="name"
+              placeholder="Name"
+            />
+            <input
+              className="rounded-md p-2 m-3"
+              type="job"
+              placeholder="Position"
+            />
+            <input
+              className="rounded-md p-2 m-3"
+              type="mail"
+              placeholder="E-mail"
+            />
+            <input
+              className="rounded-md p-2 m-3"
+              type="file"
+              placeholder="Image"
+            />
+            <div className="modal-action">
+              <form method="dialog p-2">
+                <button className="btn">Close</button>
+                <button
+                  onClick={() => {
+                    editEmployee(user.eid);
+                  }}
+                  className="btn"
+                >
+                  Save change
+                </button>
+              </form>
+            </div>
+          </div>
+        </dialog>
+        {/* <button
           onClick={() => {
             console.log(user.eid);
             editEmployee(user.eid);
@@ -36,7 +80,7 @@ const UserRow = ({ user, deleteEmployeeByID, editEmployee }) => {
           className="btn btn-outline btn-info btn-xs"
         >
           Edit
-        </button>
+        </button> */}
         <button
           onClick={() => {
             console.log(user.eid);

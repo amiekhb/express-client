@@ -6,7 +6,7 @@ import { useState } from "react";
 const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
-    <main className="max-w-5xl m-auto">
+    <main className="m-auto">
       <UserList />
     </main>
   );

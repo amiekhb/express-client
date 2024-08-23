@@ -28,8 +28,8 @@ const UserList = () => {
       body: JSON.stringify({
         firstname: "Navchaa",
         lastname: "Davaa",
-        email: "navchaa@gmail.com",
-        position: "Developer",
+        email: "",
+        position: "",
         profileImg: "https://img.daisyui.com/images/profile/demo/2@94.webp",
       }),
     });
@@ -41,6 +41,16 @@ const UserList = () => {
   const editEmployee = async (id) => {
     const res = await fetch(`http://localhost:8000/users/${id}`, {
       method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        firstname: "Saraa",
+        lastname: "Davaa",
+        email: "saraa@gmail.com",
+        position: "aaaa",
+        profileImg: "https://img.daisyui.com/images/profile/demo/2@94.webp",
+      }),
     });
     const { users } = await res.json();
     getEmployeesData();
@@ -67,14 +77,51 @@ const UserList = () => {
         </tbody>
       </table>
       <div>
+        {/* Open the modal using document.getElementById('ID').showModal() method */}
         <button
-          onClick={() => {
-            createEmployee();
-          }}
-          className="btn btn-outline btn-success  "
+          className="btn  btn-outline btn-success"
+          onClick={() => document.getElementById("my_modal_2").showModal()}
         >
-          Nemeh
+          Create user
         </button>
+        <dialog id="my_modal_2" className="modal">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">Hello!</h3>
+            <input
+              className="rounded-md p-2 m-3"
+              type="name"
+              placeholder="Name"
+            />
+            <input
+              className="rounded-md p-2 m-3"
+              type="job"
+              placeholder="Position"
+            />
+            <input
+              className="rounded-md p-2 m-3"
+              type="mail"
+              placeholder="E-mail"
+            />
+            <input
+              className="rounded-md p-2 m-3"
+              type="file"
+              placeholder="Image"
+            />
+            <div className="modal-action">
+              <form method="dialog">
+                <button className="btn">Close</button>
+                <button
+                  onClick={() => {
+                    createEmployee();
+                  }}
+                  className="btn btn-outline btn-success  "
+                >
+                  Create user
+                </button>
+              </form>
+            </div>
+          </div>
+        </dialog>
       </div>
     </div>
   );
